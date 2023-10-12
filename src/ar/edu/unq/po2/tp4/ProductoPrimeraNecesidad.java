@@ -19,7 +19,7 @@ public class ProductoPrimeraNecesidad  extends Producto {
 	
 	@Override
 	public Double getPrecio() {
-		return this.getPrecio() - (this.getPrecio() * (getPorcentaje() / 100));
+		return this.precio - ((this.precio * getPorcentaje()) / 100);
 	} 
  
 }

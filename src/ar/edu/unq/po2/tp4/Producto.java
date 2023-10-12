@@ -2,7 +2,7 @@ package ar.edu.unq.po2.tp4;
 
 public class Producto {
 	private String nombre;
-	private Double precio; 
+	protected Double precio; 
 	private Boolean esPrecioCuidado;
 	
 	public Producto(String nombre, Double precio) {
