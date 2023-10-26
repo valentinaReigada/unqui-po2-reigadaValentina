@@ -1,11 +1,19 @@
 package ar.edu.unq.po2.tp6.ej2;
 
 public class SolicitudDeCreditoPersonal extends SolicitudDeCredito {
-
-	public SolicitudDeCreditoPersonal(Cliente cliente, Double monto, Integer plazos) {
+	private Double porcentajeIngresosMensual;
+	
+	public SolicitudDeCreditoPersonal(Cliente cliente, Double monto, Integer plazos, Double porcentaje) {
 		super(cliente, monto, plazos);
+		this.porcentajeIngresosMensual = porcentaje;
 	}
 
+	
+	public void setPorcentajeIngresosMensual(Double porcentaje) {
+		this.porcentajeIngresosMensual = porcentaje;
+	}
+	
+	
 	@Override
 	public Boolean esAceptable() {
 		return this.cumplePorIngresosAnuales() && this.cumpleCuotasSegunIngresosMensuales();
@@ -16,7 +24,7 @@ public class SolicitudDeCreditoPersonal extends SolicitudDeCredito {
 	}
 	
 	public Boolean cumpleCuotasSegunIngresosMensuales() {
-		Double porcentajeIngreso = this.getCliente().getSueldoNeto() * 0.7;
+		Double porcentajeIngreso = this.getCliente().getSueldoNeto() * this.porcentajeIngresosMensual;
 		return this.montoDeCuota() < porcentajeIngreso;
 	}
 	

@@ -45,13 +45,6 @@ public class Banco {
 		this.agregarSolicitud(solicitud);
 	}
 	
-	/*public Double desembolsarSiCorresponde(SolicitudDeCredito solicitud) {
-		Double monto = 0d;
-		if(solicitud.esAceptable()) {
-			monto = solicitud.getMonto();
-		}
-		return monto;
-	}*/
 	
 	public Double montoTotalADesembolsar() {
 		return this.getSolicitudes().stream().filter(sol -> sol.esAceptable()).mapToDouble(sol -> sol.getMonto()).sum();

@@ -1,0 +1,34 @@
+
+-¿Por qué su solución no viola los principios SOLID?
+
+-La clase Banco tiene una única responsabilidad,
+administrar los clientes, solicitudes de credito,
+y calcular el monto total a desembolsar
+segun las solicitudes registradas. Esta clase no rompe
+los principios solid, ya que se tuvo en cuenta que quede 
+abierta a la extencion de nuevas solicitudes de credito,
+esto se da porque depende de una clase abstracta 
+<SolicitudDeCredito>.
+
+-La clase <SolicitudDeCredito> es abstracta para que
+no pueda ser instanciada directamente, y que se pueda hacer
+mediante clases hijas que la hereden. Esto permite poder
+tener variaciones de solicitudes de credito. Esta clase
+tiene un metodo abstracto <EsAceptable()> para que cada
+subclase implemente y pueda poner las condiciones propias de ella
+para que sea aceptable.
+Esto permite poder tener un código escalabre, se puede
+ampliar solicitudes de credito y que cada una elija sus
+condiones para ser aprobadas.
+
+-Las clases hijas: SolicitudesDeCreditoPersonal y Hipotecario
+son subclases de SolicitudDeCredito. 
+En estas clases se implementa el método <esAceptable>.
+para las condiciones de aprobación se tuvo en cuenta agregar
+variables de instancia para el porcentaje a aplicar, y un
+método set para cambiarlo cuando sea necesario. esto ayuda
+a poder tener un código mas escalable, ya que se puede
+cambiar cuando sea necesario el porcentaje a aplicar.
+
+- Cliente y Propiedad mantienen un código limpio, conteniendo
+metodos propios de sus datos.
